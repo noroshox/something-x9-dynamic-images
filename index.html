@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
+    <title>Adorable Web Page Design</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="hero">
+      <div class="navbar">
+        <img src="https://i.imgur.com/AM437sC.png" class="logo" />
+        <div class="user">
+          <button type="button">Explore</button>
+          <img src="https://i.imgur.com/3bPkkLx.png" />
+        </div>
+      </div>
+      <div class="container">
+        <div class="info">
+          <h1>INDIE SLEAZE</h1>
+          <p>
+            is a fashion style that was popular in the United States and United
+            Kingdom from approximately 2006 to 2012. Characterised by an
+            affordable,<br />
+            messy and lethargic take on vintage fashion styles, especially the
+            1970s, the style was particularly popular amongst the hipster
+            subculture and indie rock bands.
+          </p>
+          <input type="text" placeholder="Search" />
+        </div>
+      </div>
+      <div class="slider">
+        <img src="https://i.imgur.com/P1Jg2JH.png" id="prev" />
+        <div class="preview">
+          <img
+            src="https://i.imgur.com/0HpPKeB.jpeg"
+            class="active thumbnail"
+          />
+          <img src="https://i.imgur.com/Sb03wrq.jpeg" class="thumbnail" />
+          <img src="https://i.imgur.com/gySO4kd.jpeg" class="thumbnail" />
+          <img src="https://i.imgur.com/P5SM9r0.jpeg" class="thumbnail" />
+          <img src="https://i.imgur.com/KfgqEIz.jpeg" class="thumbnail" />
+        </div>
+        <img src="https://i.imgur.com/F2rorO2.png" id="next" />
+      </div>
+    </div>
+
+    <script>
+      var prev = document.getElementById("prev");
+      var next = document.getElementById("next");
+      var thumbnail = document.getElementsByClassName("thumbnail");
+      var hero = document.getElementById("hero");
+      var backgroundImg = [
+        "https://i.imgur.com/ku92X1b.jpeg",
+        "https://i.imgur.com/BuVOoPq.jpeg",
+        "https://i.imgur.com/tz9vxRB.jpeg",
+        "https://i.imgur.com/S6YoIpz.jpeg",
+        "https://i.imgur.com/qL8LHRl.jpeg"
+    ];
+      let i = 0;
+      function changeBackground(index){
+        hero.classList.add("fade");
+        setTimeout(() => {
+            hero.style.backgroundImage = 'url("'+backgroundImg[index]+ '")';
+            hero.classList.remove("fade");
+        }, 300);
+      }
+      next.onclick = function () {
+        if (i < 4) {
+          hero.style.backgroundImage = 'url("' + backgroundImg[i + 1] + '")';
+          thumbnail[i+1].classList.add("active");
+          thumbnail[i].classList.remove("active");
+          i++;
+        }
+      }
+      prev.onclick = function () {
+        if (i > 0){
+          hero.style.backgroundImage = 'url("' + backgroundImg[i-1] + '")';
+           thumbnail[i-1].classList.add("active");
+          thumbnail[i].classList.remove("active");
+          i--;
+        }
+      }
+    </script>
+  </body>
+</html>
